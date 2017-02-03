@@ -1,0 +1,163 @@
+***************************************************************************
+***                            #QuizPL TeaM                             ***
+***                                                                     ***
+***                  Najlepszy kana³ quizowy na IRC-u!                  ***
+***************************************************************************
+***                        http://www.quizpl.net                        ***
+***                          kontakt@quizpl.net                         ***
+***************************************************************************
+
+Witaj drogi Quizowiczu. Oto instrukcja, dziêki której bêdziesz móg³/mog³a
+samodzielnie napisaæ i puœciæ swoj¹ premierê quizow¹ na kanale #QuizPL. :)
+
+Pe³ny poradnik znajdziesz pod adresem: http://www.quizpl.net/poradnik
+
+############################
+### I. Instalacja mIRCa. ###
+############################
+
+Jeœli masz ju¿ œci¹gniêtego i poprawnie skonfigurowanego mIRCa mo¿esz
+pomin¹æ ten punkt i po uruchomieniu mIRCa dodaæ do ulubionych kana³ #QuizPL
+oraz wejœæ na kana³ poleceniem /join #QuizPL
+
+
+Aby zaœ œci¹gn¹æ mIRCa i móc graæ na kanale #QuizPL wykonaj poni¿sze kroki:
+
+1. Œci¹gnij plik http://www.quizpl.net/viewforum.php?f=79
+2. Rozpakuj powy¿szy plik do dowolnego katalogu, np. C:\Program Files\
+3. Przeczytaj zamieszczony tam plik "-= Przeczytaj mnie =-.txt"
+4. Uruchom plik mIRC.exe
+5. Kliknij teraz na pierwsz¹ ikonkê pod menu (t¹ z piorunkiem) lub
+   wpisz na dole "/server polska.irc.pl" (bez cudzys³owu) i wciœnij
+   enter. Jeœli po³¹czy³eœ siê z serwerem i automatycznie otworzy³o siê
+   nowe okienko, to jesteœ ju¿ na kanale #QuizPL i od teraz mo¿esz
+   zdobywaæ punkciki!
+
+
+Alternatywnie mo¿esz œci¹gn¹æ mIRCa ze strony autora programu
+http://www.mirc.com/get.html lecz wówczas musisz samodzielnie skonfigurowaæ
+program lub napisaæ na adres kontakt@quizpl.net by uzyskaæ nasz¹ pomoc.
+
+###############################
+### II. Instalacja skryptu. ###
+###############################
+
+Rozpakuj to archiwum i przenieœ wszystkie pliki do g³ównego katalogu mIRCa,
+np. C:\Program Files\mIRC\ oraz uruchom plik mirc.exe
+
+Teraz, by móc korzystaæ ze skryptu (w dniu puszczania quizu), nale¿y go
+wgraæ do uruchomionego wczeœniej mIRCa. Uzyskasz to poleceniem:
+
+/load -rs kf.als
+
+W okienku statusu powinien pojawiæ siê podobny do tego napis:
+
+* Loaded script 'C:\...\kf.als'
+
+#############################################
+### III. Przygotowanie pliku z pytaniami. ###
+#############################################
+
+Ten rodzaj quizu opiera siê na wiedzy graczy, ich b³yskotliwoœci i polega
+na losowaniu liter oraz odgadywaniu ujawniaj¹cych siê hase³.
+
+Gdy zdecydujesz siê napisaæ swój quiz i puœciæ go na kanale - wybierz sobie
+dziedzinê z jakiej chcia³byœ napisaæ quiz (mo¿e byæ tak¿e wiedza ogólna).
+
+Poniewa¿ skrypt nie posiada trybu autoquizu - has³a musisz wprowadzaæ na
+bie¿¹co podczas quizu. Najlepiej jednak przygotowaæ je wczeœniej w osobnym
+pliku.
+
+Przyk³adowy quiz znajdziesz w pliku "przyklad.txt", zaznajom siê z nim.
+
+
+Podstawowe zasady uk³adania quizów:
+
+- nie u¿ywaj w has³ach znaków diakrytycznych (¹, æ, ê, ³, ñ, ó, œ, Ÿ, ¿)
+- has³a nie mog¹ zawieraæ b³êdów ortograficznych i merytorycznych
+- has³a powinny mieæ odpowiedni¹ d³ugoœæ, najlepiej niech maj¹ góra 4-6
+  wyrazów
+- nie u¿ywaj s³ów niecenzuralnych
+
+
+Zestaw premierowy powinien zawieraæ ok. 25 hase³.
+
+################################
+### IV. Puszczenie premiery. ###
+################################
+
+Kiedy napiszesz ju¿ quiz i ustalisz z operatorami kana³u dzieñ i godzinê
+premiery - mo¿esz przyst¹piæ do jej realizacji w wyznaczonym terminie. Nie
+zapomnij tylko o wgraniu skryptu (patrz punkt II). ;)
+
+Skrypt zawiera wiele poleceñ. Pe³n¹ ich listê uzyskasz poleceniem: /kfkom
+
+Aby uruchomiæ quiz otwórz okno kana³u #QuizPL i wpisz:
+
+/kfon #QuizPL
+
+i wybierz swoj¹ rolê (nie ma to ¿adnego wp³ywu na quiz).
+
+Has³a wprowadzisz poleceniem:
+
+/haslo
+
+po czym musisz podaæ kategoriê i treœæ samego has³a.
+
+Teraz gracze maj¹ czas na zg³oszenie chêci udzia³u w danej rundzie gry.
+
+*** Teraz gracze graj¹ i ciesz¹ siê z Twojej premiery. ;) ***
+
+Gdy ktoœ odgadnie has³o, to wracasz do polecenia wprowadzania has³a tyle
+razy, ile hase³ masz przygotowanych.
+
+W sytuacji gdyby któryœ z graczy mimo przyst¹pienia do gry przesta³ graæ
+mo¿esz pomin¹æ jego kolejkê poleceniem /pomin Gra przejdzie do kolejnej
+osoby.
+
+Po zakoñczeniu premiery trzeba wyœwietliæ wyniki. Uczynisz to poleceniem:
+
+/kfstat
+
+Na koniec zamykasz quiz poleceniem:
+
+/kfoff
+
+
+Po zakoñczeniu i zamkniêciu quizu mo¿esz (zalecane), ale nie musisz
+wy³adowaæ skrypt z mIRCa. Dokonasz tego poleceniem:
+
+/unload -rs kf.als
+
+Aby puœciæ kolejn¹ premierkê nale¿y ponownie wgraæ skrypt poleceniem /load
+(patrz punkt II).
+
+
+Uwaga, nie zapomnij by po zakoñczeniu premiery przys³aæ plik z pytaniami,
+temat quizu wraz z dat¹ puszczenia oraz pe³ne wyniki na adres kana³owy:
+kontakt@quizpl.net Pytania zostan¹ wówczas dodane do bazy naszego quizbota
+i wszyscy bêd¹ mogli siê nimi cieszyæ jeszcze przez d³ugie lata ;)
+
+##############################
+### V. Polecenia kana³owe. ###
+##############################
+
+W trakcie trwania premiery quizowej dla graczy dostêpne s¹ specjalne
+polecenia. Pamiêtaj, ¿e z uwagi na specyficzny sposób funkcjonowania mIRCa
+te polecenia nie s¹ dostêpne dla puszczaj¹cego premierê.
+
+Do³¹czenie do kolejnego has³a: !join
+
+Losowanie stawki: !krece
+
+##################################
+### VI. Informacje o skrypcie. ###
+##################################
+
+Wersja: Ko³o Fortuny 1.0
+Autor: snajperx
+Tuning: wilk (sensowniejsze stawki)
+
+
+Mi³ej zabawy ¿yczy,
+Ekipa #QuizPL.
