@@ -1,0 +1,16 @@
+Planety Ukladu Slonecznego:
+Merkury*Wenus*Ziemia*Mars*Jowisz*Saturn*Uran*Neptun
+Kolory teczy:
+czerwony*pomaranczowy*zolty*zielony*niebieski*granatowy*fioletowy
+Rzeczowniki wystepujace tylko w liczbie mnogiej:
+drzwi*spodnie*plecy*imieniny*nozyce*usta*tatry*skrzypce
+Imiona meskie na M:
+Marcin*Marian*Maksymilian*Marek*Marceli*Mateusz
+Zwierzeta domowe:
+kot*pies*swinka morska*chomik*mysz*papuga*szynszyla*rybki*ptasznik
+Pomieszczenia w szkole:
+aula*szatnia*biblioteka*swietlica*sklepik*sekretariat*klasa*sala gimnastyczna*pokoj nauczycielski
+Wymien alkany:
+metan*etan*propan*butan*pentan*heksan*heptan*oktan*nonan*dekan
+Elementy zestawu komputerowego:
+klawiatura*monitor*myszka*glosniki*mikrofon*komputer
