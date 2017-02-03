@@ -1,0 +1,73 @@
+***************************************************************************
+***                            #QuizPL TeaM                             ***
+***                                                                     ***
+***                  Najlepszy kanał quizowy na IRC-u!                  ***
+***************************************************************************
+***                        http://www.quizpl.net                        ***
+***************************************************************************
+
+#####################
+## KeepNick # v1.5 ##
+#####################
+
+Skrypt ten umożliwia złapanie i pilnowanie wybranego nicka poprzez okresowe
+sprawdzanie jego dostępności oraz reagowanie na zdarzenia kanałowe.
+
+Aby wgrać skrypt do mIRCa wpisz: /load -rs keepnick.mrc
+
+Dostępne są następujące polecenia:
+
+/keepnick   - otwiera okienko z konfiguracją (alias: /kn)
+
+#####################
+## AntiIdle # v1.0 ##
+#####################
+
+Skrypt ten symuluje prowadzenie przez nas rozmów poprzez wysyłanie samemu
+sobie wiadomości, co efektywnie resetuje nasz idle.
+
+Aby wgrać skrypt do mIRCa wpisz: /load -rs antiidle.mrc
+
+Dostępne są następujące polecenia:
+
+/antiidle   - otwiera okienko z konfiguracją (alias: /ai)
+
+#####################
+##  MPing   # v1.1 ##
+#####################
+
+Skrypt ten pozwala wysyłać polecenia PING z milisekundową rozdzielczością,
+podczas gdy standardowe polecenie mIRCa ogranicza się do pełnych sekund.
+
+Aby wgrać skrypt do mIRCa wpisz: /load -rs mping.mrc
+
+Dostępne są następujące polecenia:
+
+/mping nick   - wysyła ping do osoby o nicku "nick"
+
+#####################
+## MassMode # v1.3 ##
+#####################
+
+Skrypt ten umożliwia ustawianie flag lub wykopywanie dowolnej liczby osób.
+Wykorzystuje dwie sztuczki omijające tzw. Penalty Points przyznawane w
+sieci IRCnet za wysyłanie zbyt wielu komend do serwera, dzięki czemu
+umożliwia natychmiastowe wykonanie większej liczby akcji. W przypadku
+ustawiania flag możliwa jest ich zmiana od razu pierwszym 5 osobom
+(standardowe polecenie mIRCa pozwala tylko na 3 osoby jednocześnie), zaś
+kopnięcia może wykonać po 6 nicków (standardowe polecenie mIRCa do 1-4).
+Częściowo wspiera także parametr serwera MODES.
+
+Aby wgrać skrypt do mIRCa wpisz: /load -rs massmode.mrc
+
+Dostępne są następujące polecenia:
+
+/mv nick1 nick2 ...    - przyznaje voice'y
+/mdv nick1 nick2 ...   - odbiera voice'y
+/mh nick1 nick2 ...    - przyznaje halfopy (niedostępne na IRCnecie)
+/mdh nick1 nick2 ...   - odbiera halfopy (niedostępne na IRCnecie)
+/mo nick1 nick2 ...    - przyznaje opy
+/mdo nick1 nick2 ...   - odbiera opy
+
+/mkreason reason      - ustawia powód wykopania na "reason" (alias: /mm)
+/mk nick1 nick2 ...   - wykopuje nicki
