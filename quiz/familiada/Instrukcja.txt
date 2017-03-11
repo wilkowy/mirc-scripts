@@ -188,10 +188,11 @@ odpowiedŸ (ale mo¿e byæ ich mniej).
 ### VII. Informacje o skrypcie. ###
 ###################################
 
-Wersja: Familiada 0.65
+Wersja: Familiada 0.66
 Autor: snajperx
 Rozbudowa: wilk (wyniki indywidualne, podsumowanie gry, liczenie
-                 odpowiedzi, podpowiedzi, ustawianie czasu trwania rundy)
+                 odpowiedzi, podpowiedzi, ustawianie czasu trwania rundy,
+				 kolorowe znaczki dru¿yn)
 
 
 Mi³ej zabawy ¿yczy,

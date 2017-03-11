@@ -1,4 +1,4 @@
-; mod by wilk (wyniki indywidualne, podsumowanie gry, liczenie odpowiedzi, podpowiedzi, ustawianie czasu trwania rundy, wyœwietlanie pytania w podpowiedziach i przypomnieniu, poprawki kodu i inne)
+; mod by wilk (wyniki indywidualne, podsumowanie gry, liczenie odpowiedzi, podpowiedzi, ustawianie czasu trwania rundy, wyœwietlanie pytania w podpowiedziach i przypomnieniu, kolorowe znaczki dru¿yn, poprawki kodu i inne)
 
 on *:TEXT:%fam_odpowiedz1:%fam_kanal: f_zgaduje 1 $nick
 on *:TEXT:%fam_odpowiedz2:%fam_kanal: f_zgaduje 2 $nick
@@ -129,7 +129,7 @@ alias fon {
   set %fam_team2_name Druzyna II
   set %fam_auto_delay 15
   set %fam_duration 120
-  fsay 8,1 8 8 8 8 8 8 8 8 8 8 -= FAMILIADA 0.65 =- 8 8 8 8 8 8 8 8 8 
+  fsay 8,1 8 8 8 8 8 8 8 8 8 8 -= FAMILIADA 0.66 =- 8 8 8 8 8 8 8 8 8 
   fsay 9,1 9 Dostepne komendy: 4 4!join 1 4 4 !join 2 4 4 !part 9 9 
   fsay 9,1 9 4 !pkt 4 4 !przyp 4 4 !pkt [nick] 4 4 !team [nazwa] 9 9 
 }
@@ -149,6 +149,7 @@ alias foff {
   .timerfamiliadaonjoin off
   fsay 8,1 8 8 8 8 8 8 -= FAMILIADA ZAKONCZONA =- 8 8 8 8 8 
   fsay 4,14 Ilosc rund:9 [ %fam_rundy ] 11 Czas gry:9 $ftime(%fam_start) 
+  fsay 15,1 15 15 15 15 15 15 15 15 15 15 Autorzy: 8snajperx15 & 8wilk 15 15 15 15 15 15 15 15 15 
   fsay 13,1 Sciagaj z: 11http://www.quizpl.net 8 8 8 8 8 8 8 8 8 8 8 
   unset %fam_*
   .remove " $+ $scriptdir $+ team1.fam $+ "
@@ -354,12 +355,14 @@ alias -l f_zgaduje {
   if (%fam_ingame_ [ $+ [ $2 ] ] !isnum 1-2) halt
   if (%fam_odpowiedz [ $+ [ $1 ] $+ [ _byla ] ] == 1) halt
   if ($dialog(familiada) == familiada) did -mbr familiada $calc(102 + 10 * $1)
-  inc %fam_druzyna [ $+ [ %fam_ingame_ [ $+ [ $2 ] ] ] $+ [ _punkty ] ] $calc(5 * (11 - $1))
+  var %fam_punkty = $calc(5 * (11 - $1))
+  inc %fam_druzyna [ $+ [ %fam_ingame_ [ $+ [ $2 ] ] ] $+ [ _punkty ] ] %fam_punkty
   inc %fam_druzyna [ $+ [ %fam_ingame_ [ $+ [ $2 ] ] ] $+ [ _odpowiedzi ] ]
-  inc %fam_nick_ [ $+ [ $2 ] $+ [ _punkty ] ] $calc(5 * (11 - $1))
+  inc %fam_nick_ [ $+ [ $2 ] $+ [ _punkty ] ] %fam_punkty
   inc %fam_nick_ [ $+ [ $2 ] $+ [ _odpowiedzi ] ]
   set %fam_odpowiedz [ $+ [ $1 ] $+ [ _byla ] ] 1
-  fsay 0,2 $2 11zdobywa $calc(5 * (11 - $1)) punktow dla $iif(%fam_ingame_ [ $+ [ $2 ] ] == 1 , %fam_team1_name , %fam_team2_name) za0 %fam_odpowiedz [ $+ [ $1 ] ] 
+  if (%fam_ingame_ [ $+ [ $2 ] ] == 1) fsay 0,3  0,2 $2 11zdobywa %fam_punkty punktow dla %fam_team1_name za0 %fam_odpowiedz [ $+ [ $1 ] ] 
+  if (%fam_ingame_ [ $+ [ $2 ] ] == 2) fsay 0,13  0,2 $2 11zdobywa %fam_punkty punktow dla %fam_team2_name za0 %fam_odpowiedz [ $+ [ $1 ] ] 
   var %fam_temp = 1
   var %fam_temp_odpowiedzi = 0
   while (%fam_temp <= 10) {
