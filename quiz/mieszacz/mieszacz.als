@@ -222,8 +222,9 @@ alias -l congr {
 alias mkoff {
   set %quizczas $duration($calc($ctime - %quizstart))
   msg %mkkanal 0,2 LiTeRaKi 8Mieszacz Kfiss™ 9zakonczony! 
-  if (%licz == 1) { msg %mkkanal 9,2 Czas gry:8 %licz 9wyraz w8 %quizczas  }
+  if (%licz == 1) { msg %mkkanal 9,2 Czas gry:8 %licz 9wyraz w8 %quizczas 2.........  }
   else { msg %mkkanal 9,2 Czas gry:8 %licz 9wyrazow w8 %quizczas  }
+  msg %mkkanal 0,2 Autorzy: 8snajperx0 & 8wilk 0 0 0 0 0 0 0 0 0 0 0 0 
   msg %mkkanal 0,2 Sciagaj z:9 http://www.quizpl.net 2... 
   unset %mkkanal %wyraz %pomieszany_wyraz %trybgry %score* %wyniki* %poz* %xx %xxx %punkty*
   unset %quiz* %stawka %gracze %plk %num %par %lin %ktory %podp %block %autonxt %delay %starydel %adres %stat %pomoc* %q1 %q2 %rc %pytan %pyt %licz %qqstart
