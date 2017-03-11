@@ -1,5 +1,5 @@
 ; usuniety bug z /replace - gracz ktorego sie usunelo nie mogl wchodzic na swoje miejsce
-; tuning by wilk (zmieniono kaza z 10000 do 5000, stawka z 10000 do 1500, rundy z 5 do 3, zmniejszone niektore stawki, podniesiono podstawowa stawke z 50 do 100)
+; tuning by wilk (zmieniono absurdalnie wysokie stawki: kasa z 10000 do 2000, stawka z 10000 do 500, zmniejszone wykrecone stawki za odsloniete litery z 50/100/250/500/1000/2000 na 50/100/150/200/250/300, podniesiono podstawowa stawke z 50 do 100, obnizono cene samoglosek z 500 do 250)
 
 on *:dialog:kolof:sclick:*: {
   if ($did == 4) unset %kf_prowadzacy %kf_kanal
@@ -31,7 +31,7 @@ on *:TEXT:*:%kf_kanal: {
         halt
       }    
       %kf_krecenie = 0
-      kfkrece 50 100 200 400 700 1000 50 100 200 400 700 1000 $rand(1 , 15)
+      kfkrece 50 100 150 200 250 300 50 100 150 200 250 300 $rand(1 , 15)
     }
     if (($right($1- , $calc($len($1-) - 1)) == nagrody) && (%kf_haslo != nagrody)) kfnagrody $nick
     if ($len(%kf_gracz [ $+ [ %kf_ilosc_graczy ] ] ) > 0) {
@@ -44,13 +44,13 @@ on *:TEXT:*:%kf_kanal: {
   if ((%kf_mega_nagroda == 1) && ($nick == %kf_gracz) && (($1- == kasa) || ($1- == rundy) || ($1- == stawka))) {
     if ($1- == kasa) {
       kfsetline %kf_gracz
-      inc %kf_punkty 5000
+      inc %kf_punkty 2000
       write -dl $+ %kf_linenr " $+ $scriptdir $+ kf.lst $+ "
       kfrank %kf_gracz %kf_punkty %kf_nagrody
-      kfgra 11,1 Teraz gra8 %kf_gracz 11( $+ $calc(%kf_punkty - 5000) $+ zl+5000zl= $+ %kf_punkty $+ zl)
+      kfgra 11,1 Teraz gra8 %kf_gracz 11( $+ $calc(%kf_punkty - 2000) $+ zl+2000zl= $+ %kf_punkty $+ zl)
     }
     if ($1- == stawka) {
-      %kf_stawka2 = 1500
+      %kf_stawka2 = 500
       kfgra 11,1 Teraz gra8 %kf_gracz $+
     }
     if ($1- == rundy) {
@@ -115,7 +115,7 @@ alias haslo {
   }
   %kf_nieodkryte_litery = abcdefghijklmnopqrstuvwxyz
   if (($zmiana($1) isnum 2-5) && ($left($1 , 1) != 0)) %kf_ilosc_graczy = $1
-  else %kf_ilosc_graczy = 3
+  else %kf_ilosc_graczy = 5
   kfgracz1
 }
 alias -l kfgracz1 kfsay 11,1 Nowe haslo -8 !join 11( $+ $kftime4(%kf_ilosc_graczy , zostalo , zostalo , zostaly , zostalo) %kf_ilosc_graczy $kftime4(%kf_ilosc_graczy , zgloszen , zgloszenie , zgloszenia , zgloszen)) $+ )
@@ -284,7 +284,7 @@ alias -l kfcongr {
   write -dl $+ %kf_linenr " $+ $scriptdir $+ kf.lst $+ "
   kfrank $1 %kf_punkty %kf_nagrody
   if (%kf_haslo_wykropkowane == %kf_haslo) {
-    kfsay 9,1 Magda odslon litery $upper($2) $+ .8 $1 ( $+ %kf_punkty_stare $+ zl+ $+ %kf_wygrana $+ zl $+ $iif($2 isin aeiouy , -500zl= , =) $+ %kf_punkty $+ zl) 9odgadl(a) wszystkie litery
+    kfsay 9,1 Magda odslon litery $upper($2) $+ .8 $1 ( $+ %kf_punkty_stare $+ zl+ $+ %kf_wygrana $+ zl $+ $iif($2 isin aeiouy , -250zl= , =) $+ %kf_punkty $+ zl) 9odgadl(a) wszystkie litery
     kfsay 9,1 Prawidlowe haslo to: 8 $upper(%kf_haslo)9
   }
   else {
@@ -302,17 +302,17 @@ alias -l kf_zgaduje_litere {
   set -u0 %kf_spacja1_pos $pos(%kf_line , $chr(32) , %kf_spacja1_nr)
   set -u0 %kf_spacja2_pos $pos(%kf_line , $chr(32) , %kf_spacja2_nr)
   set -u0 %kf_imie $mid(%kf_line , %kf_spacja1_pos , $calc($len(%kf_line) - $len($mid(%kf_line , %kf_spacja2_pos , $len(%kf_line))) - $len($mid(%kf_line , 1 , %kf_spacja1_pos)) + 1))
-  if (($2 isin aeiouy) && (%kf_punkty < 500)) {
-    kfsay 15,1 Samogloska kosztuje 500zl. Brakuje ci $calc(500 - %kf_punkty) $+ zl
+  if (($2 isin aeiouy) && (%kf_punkty < 250)) {
+    kfsay 15,1 Samogloska kosztuje 250zl. Brakuje ci $calc(250 - %kf_punkty) $+ zl
     halt
   }
   if ($2 isin %kf_haslo_wykropkowane) {
     if ($2 isin aeiouy) {
-      dec %kf_punkty 500
+      dec %kf_punkty 250
       write -dl $+ %kf_linenr " $+ $scriptdir $+ kf.lst $+ "
       kfrank %kf_gracz %kf_punkty %kf_nagrody
     }
-    kfgra 15,1 $2 jak %kf_imie $+ . Litera jest juz odkryta. $iif($2 isin aeiouy , $calc(%kf_punkty + 500) $+ zl-500zl= $+ %kf_punkty $+ zl. 11, 11) $+ $iif(%kf_kolejka == 0 , Teraz gra8 %kf_gracz_next 11( $+ %kf_punkty_next $+ zl) , 8 $+ %kf_gracz 11wykorzystuje %kf_kolejka powtorzenie rundy)
+    kfgra 15,1 $2 jak %kf_imie $+ . Litera jest juz odkryta. $iif($2 isin aeiouy , $calc(%kf_punkty + 250) $+ zl-250zl= $+ %kf_punkty $+ zl. 11, 11) $+ $iif(%kf_kolejka == 0 , Teraz gra8 %kf_gracz_next 11( $+ %kf_punkty_next $+ zl) , 8 $+ %kf_gracz 11wykorzystuje %kf_kolejka powtorzenie rundy)
     if (%kf_kolejka == 0) {
       kf_nastepny_gracz
       halt
@@ -323,12 +323,12 @@ alias -l kf_zgaduje_litere {
   }
   if ($2 !isin %kf_haslo) {
     if ($2 isin aeiouy) {
-      dec %kf_punkty 500
+      dec %kf_punkty 250
       write -dl $+ %kf_linenr " $+ $scriptdir $+ kf.lst $+ "
       kfrank %kf_gracz %kf_punkty %kf_nagrody
     }
     %kf_nieodkryte_litery = $replace(%kf_nieodkryte_litery , $2 , 14 $+ $2 $+ 11)
-    kfgra 15,1 $2 jak %kf_imie $+ . Litery nie ma w hasle. $iif($2 isin aeiouy , $calc(%kf_punkty + 500) $+ zl-500zl= $+ %kf_punkty $+ zl. 11, 11) $+ $iif(%kf_kolejka == 0 , Teraz gra8 %kf_gracz_next 11( $+ %kf_punkty_next $+ zl) , 8 $+ %kf_gracz 11wykorzystuje %kf_kolejka powtorzenie rundy)
+    kfgra 15,1 $2 jak %kf_imie $+ . Litery nie ma w hasle. $iif($2 isin aeiouy , $calc(%kf_punkty + 250) $+ zl-250zl= $+ %kf_punkty $+ zl. 11, 11) $+ $iif(%kf_kolejka == 0 , Teraz gra8 %kf_gracz_next 11( $+ %kf_punkty_next $+ zl) , 8 $+ %kf_gracz 11wykorzystuje %kf_kolejka powtorzenie rundy)
     if (%kf_kolejka == 0) {
       kf_nastepny_gracz
       halt
@@ -347,7 +347,7 @@ alias -l kf_zgaduje_litere {
   }
   %kf_nieodkryte_litery = $replace(%kf_nieodkryte_litery , $2 , 14 $+ $2 $+ 11)
   var %kf_punkty_stare = %kf_punkty
-  if ($2 isin aeiouy) dec %kf_punkty 500
+  if ($2 isin aeiouy) dec %kf_punkty 250
   inc %kf_punkty %kf_wygrana
   write -dl $+ %kf_linenr " $+ $scriptdir $+ kf.lst $+ "
   kfrank %kf_gracz %kf_punkty %kf_nagrody
@@ -355,7 +355,7 @@ alias -l kf_zgaduje_litere {
     kfcongr %kf_gracz $2
     halt
   }
-  kfgra 9,1 $2 jak %kf_imie $+ . Magda odslon litery.11 Teraz gra8 %kf_gracz 11( $+ %kf_punkty_stare $+ zl+ $+ %kf_wygrana $+ zl $+ $iif($2 isin aeiouy , -500zl= , =) $+ %kf_punkty $+ zl)
+  kfgra 9,1 $2 jak %kf_imie $+ . Magda odslon litery.11 Teraz gra8 %kf_gracz 11( $+ %kf_punkty_stare $+ zl+ $+ %kf_wygrana $+ zl $+ $iif($2 isin aeiouy , -250zl= , =) $+ %kf_punkty $+ zl)
 }
 alias -l kf_zgaduje_haslo {
   if ($2- == %kf_haslo) kfcongr $1
@@ -442,8 +442,9 @@ alias kfoff {
   kfchk
   .timerkf off
   .remove " $+ $scriptdir $+ kf.lst $+ "
-  kfsay 11,1 Swistak(r) 8Kolo Fortuny(tm) 11zakonczony !!!!!!!!!
-  kfsay 9,1 Sciagaj z:13 http://www.quizpl.net
+  kfsay 11,1 Swistak(r) 8Kolo Fortuny(tm) 11zakonczony !!!!!!!!! 
+  kfsay 9,1 Autor:11 snajperx9,1, tuning:11 wilk 
+  kfsay 9,1 Sciagaj z:13 http://www.quizpl.net 
   unset %kf*
 }
 alias kfprzyp {
@@ -569,7 +570,7 @@ alias -l kfnagroda {
 }
 alias -l kfmeganagroda {
   %kf_mega_nagroda = 1
-  kfsay 8,1 %kf_gracz 11wylosowales(as)13 mega nagrode!11. Wpisz 8kasa 11aby otrzymac 5000zl. Wpisz 8stawka 11aby stawka za odkryta litere wynosila 1500zl. Wpisz 8rundy 11aby zyskac trzy dodatkowe rundy
+  kfsay 8,1 %kf_gracz 11wylosowales(as)13 mega nagrode!11. Wpisz 8kasa 11aby otrzymac 2000zl. Wpisz 8stawka 11aby stawka za odkryta litere wynosila 500zl. Wpisz 8rundy 11aby zyskac trzy dodatkowe rundy
   halt
 }
 alias -l kfnagrody {
@@ -636,7 +637,7 @@ alias kfkom {
   echo -a -- 10Kolo Fortuny(tm) - spis komend --
   echo -a $chr(124) 10/kfon #kanal - uruchomienie Kola Fortuny na #kanal
   echo -a $chr(124) 10/kfoff - zakonczenie Kola Fortuny
-  echo -a $chr(124) 10/haslo - podanie nowego hasla dla trzech osob
+  echo -a $chr(124) 10/haslo - podanie nowego hasla dla pieciu osob
   echo -a $chr(124) 10/haslo 2-5- podanie nowego hasla, cyfra oznacza liczbe graczy, wybor od 2 do 5
   echo -a $chr(124) 10/anuluj - anulowanie biezacej rundy
   echo -a $chr(124) 10/pomin - pominiecie kolejki gracza

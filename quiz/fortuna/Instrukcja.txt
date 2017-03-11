@@ -156,7 +156,7 @@ Losowanie stawki: !krece
 
 Wersja: Ko³o Fortuny 1.0
 Autor: snajperx
-Tuning: wilk (sensowniejsze stawki)
+Tuning: wilk (sensowniejsze stawki: kasa z 10000 do 2000, stawka z 10000 do 500, zmniejszone wykrecone stawki za odsloniete litery z 50/100/250/500/1000/2000 na 50/100/150/200/250/300, podniesiono podstawowa stawke z 50 do 100, obnizono cene samoglosek z 500 do 250)
 
 
 Mi³ej zabawy ¿yczy,
