@@ -3,7 +3,7 @@ Repository of various quiz scripts used on channel #QuizPL (IRCnet).
 - **AntyGoogler** (author: oyey)
 - **Dizzy** v4.0 (author: Dizzy)
 - **Dizzy Pro** v1.0 (author: Dizzy, mods: Ptysiek [antygoogler, otherwise it's the same as Dizzy v4.0])
-- **Familiada** v0.65 (author: snajperx, mods: wilk [personal ranking, quiz summary, hints, customizable round timeout])
+- **Familiada** v0.66 (author: snajperx, mods: wilk [personal ranking, quiz summary, hints, team flags, customizable round timeout])
 - **Familiada** v0.72 (author: snajperx [uses some of my mods])
 - **Koło Fortuny** v1.0 (author: snajperx, mods: wilk [finetuned scoring system])
 - **Mieszacz** (author: snajperx, mods: wilk [shuffling modes, !przyp reshuffles, same answer protection, timing answers])
