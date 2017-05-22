@@ -1,4 +1,4 @@
-; mod by wilk (wyniki indywidualne, podsumowanie gry, liczenie odpowiedzi, podpowiedzi, ustawianie czasu trwania rundy, wyœwietlanie pytania w podpowiedziach i przypomnieniu, kolorowe znaczki dru¿yn, poprawki kodu i inne)
+; mod by wilk (wyniki indywidualne, podsumowanie gry, liczenie odpowiedzi, podpowiedzi, ustawianie czasu trwania rundy, wyswietlanie pytania w podpowiedziach i przypomnieniu, kolorowe znaczki druzyn, komunikat przy join/part, naprawione wychodzenie z druzyny, poprawki kodu i inne)
 
 on *:TEXT:%fam_odpowiedz1:%fam_kanal: f_zgaduje 1 $nick
 on *:TEXT:%fam_odpowiedz2:%fam_kanal: f_zgaduje 2 $nick
@@ -129,7 +129,7 @@ alias fon {
   set %fam_team2_name Druzyna II
   set %fam_auto_delay 15
   set %fam_duration 120
-  fsay 8,1 8 8 8 8 8 8 8 8 8 8 -= FAMILIADA 0.66 =- 8 8 8 8 8 8 8 8 8 
+  fsay 8,1 8 8 8 8 8 8 8 8 8 8 -= FAMILIADA 0.67 =- 8 8 8 8 8 8 8 8 8 
   fsay 9,1 9 Dostepne komendy: 4 4!join 1 4 4 !join 2 4 4 !part 9 9 
   fsay 9,1 9 4 !pkt 4 4 !przyp 4 4 !pkt [nick] 4 4 !team [nazwa] 9 9 
 }
@@ -147,10 +147,10 @@ alias foff {
   .timerfamiliada off 
   .timerfamiliadaauto off
   .timerfamiliadaonjoin off
-  fsay 8,1 8 8 8 8 8 8 -= FAMILIADA ZAKONCZONA =- 8 8 8 8 8 
+  fsay 8,1 8 8 8 8 8 8 8 -= FAMILIADA ZAKONCZONA =- 8 8 8 8 8 8 
   fsay 4,14 Ilosc rund:9 [ %fam_rundy ] 11 Czas gry:9 $ftime(%fam_start) 
-  fsay 15,1 15 15 15 15 15 15 15 15 15 15 Autorzy: 8snajperx15 & 8wilk 15 15 15 15 15 15 15 15 15 
-  fsay 13,1 Sciagaj z: 11http://www.quizpl.net 8 8 8 8 8 8 8 8 8 8 8 
+  fsay 15,1 15 15 15 15 15 15 15 15 15 15 15 Autorzy: 8snajperx15 & 8wilk 15 15 15 15 15 15 15 15 15 15 15 
+  fsay 13,1 Sciagaj z: 11http://www.quizpl.net 8 8 8 8 8 8 8 8 8 8 8 8 8 8 
   unset %fam_*
   .remove " $+ $scriptdir $+ team1.fam $+ "
   .remove " $+ $scriptdir $+ team2.fam $+ "
@@ -209,10 +209,18 @@ alias fplay {
 
 alias -l f_part {
   if ($len(%fam_ingame_ [ $+ [ $1 ] ] ) < 1) halt
-  else unset %fam_ingame_ [ $+ [ $1 ] ]
   var %fam_temp = $read(" $+ $scriptdir $+ team [ $+ [ %fam_ingame_ [ $+ [ $1 ] ] ] $+ [ .fam ] ] $+ ", s , $1)
   var %fam_temp = $readn
-  if (%fam_temp > 0) write -dl [ $+ [ %fam_temp ] ] " $+ $scriptdir $+ team [ $+ [ %fam_ingame_ [ $+ [ $1 ] ] ] $+ [ .fam ] ] $+ "
+  if (%fam_temp > 0) {
+    write -dl [ $+ [ %fam_temp ] ] " $+ $scriptdir $+ team [ $+ [ %fam_ingame_ [ $+ [ $1 ] ] ] $+ [ .fam ] ] $+ "
+    if (%fam_ingame_ [ $+ [ $1 ] ] == 1) {
+      .notice $1 Opusciles(as) druzyne "4 $+ %fam_team1_name $+ ".
+    }
+    else {
+      .notice $1 Opusciles(as) druzyne "4 $+ %fam_team2_name $+ ".
+    }
+    unset %fam_ingame_ [ $+ [ $1 ] ]
+  }
 }
 
 alias -l f_onpart {
@@ -269,7 +277,7 @@ alias -l f_punktacja {
   var %fam_temp2 = $readn
   if ($len($read(" $+ $scriptdir $+ team1.fam $+ " , s , $2)) > 0) var %fam_temp = 1
   else var %fam_temp = 2
-  if (%fam_nick_ [ $+ [ $2 ] $+ [ _punkty ] ] > 0) .notice $1 $read(" $+ $scriptdir $+ team [ $+ [ %fam_temp ] $+ [ .fam ] ] $+ " , %fam_temp2) zdobyl(a) %fam_nick_ [ $+ [ $2 ] $+ [ _punkty ] ] punktow w Familiadzie za %fam_nick_ [ $+ [ $2 ] $+ [ _odpowiedzi ] ] odpowiedzi
+  if (%fam_nick_ [ $+ [ $2 ] $+ [ _punkty ] ] > 0) .notice $1 $read(" $+ $scriptdir $+ team [ $+ [ %fam_temp ] $+ [ .fam ] ] $+ " , %fam_temp2) zdobyl(a) %fam_nick_ [ $+ [ $2 ] $+ [ _punkty ] ] punktow w Familiadzie za %fam_nick_ [ $+ [ $2 ] $+ [ _odpowiedzi ] ] odpowiedzi.
 }
 
 alias -l f_removeplayer {
@@ -345,11 +353,11 @@ alias -l fpyt2 {
     inc %fam_temp
   }
   .timerfamiliada off
-  fsay 10,1 Pytanie:8,1 %fam_pytanie $ftabela(0) 1,1 7,1 Czas: %fam_duration $+ s
+  fsay 15,1 Pytanie:8,1 %fam_pytanie $ftabela(0) 1,1 7,1 Czas: %fam_duration $+ s
   .timerfamiliada -o 0 %fam_duration f_timeout
 }
 
-alias -l f_przyp if (%fam_podpowiedz != $null) fsay 10,1 Pytanie:8,1 %fam_pytanie $ftabela(0)
+alias -l f_przyp if (%fam_podpowiedz != $null) fsay 15,1 Pytanie:8,1 %fam_pytanie $ftabela(0)
 
 alias -l f_zgaduje {
   if (%fam_ingame_ [ $+ [ $2 ] ] !isnum 1-2) halt
@@ -361,8 +369,12 @@ alias -l f_zgaduje {
   inc %fam_nick_ [ $+ [ $2 ] $+ [ _punkty ] ] %fam_punkty
   inc %fam_nick_ [ $+ [ $2 ] $+ [ _odpowiedzi ] ]
   set %fam_odpowiedz [ $+ [ $1 ] $+ [ _byla ] ] 1
-  if (%fam_ingame_ [ $+ [ $2 ] ] == 1) fsay 0,3  0,2 $2 11zdobywa %fam_punkty punktow dla %fam_team1_name za0 %fam_odpowiedz [ $+ [ $1 ] ] 
-  if (%fam_ingame_ [ $+ [ $2 ] ] == 2) fsay 0,13  0,2 $2 11zdobywa %fam_punkty punktow dla %fam_team2_name za0 %fam_odpowiedz [ $+ [ $1 ] ] 
+  if (%fam_ingame_ [ $+ [ $2 ] ] == 1) {
+    fsay 0,3  0,2 $2 11zdobywa %fam_punkty punktow dla %fam_team1_name za0 %fam_odpowiedz [ $+ [ $1 ] ] 
+  }
+  else {
+    fsay 0,6  0,2 $2 11zdobywa %fam_punkty punktow dla %fam_team2_name za0 %fam_odpowiedz [ $+ [ $1 ] ] 
+  }
   var %fam_temp = 1
   var %fam_temp_odpowiedzi = 0
   while (%fam_temp <= 10) {
@@ -382,7 +394,7 @@ alias -l f_statystyka {
     inc %fam_temp
   }
   .notice $1 3 $+ %fam_team1_name ( $+ %fam_temp_d1 $+ ): %fam_druzyna1_punkty punktow *** 6 $+ %fam_team2_name ( $+ %fam_temp_d2 $+ ): %fam_druzyna2_punkty punktow *** Czas trwania gry: $fodmiana(%fam_rundy , runda , rundy , rund) ( $+ $ftime(%fam_start) $+ )
-  if (%fam_nick_ [ $+ [ $1 ] $+ [ _punkty ] ] > 0) .notice $1 Zdobyles(as) %fam_nick_ [ $+ [ $1 ] $+ [ _punkty ] ] punktow w Familiadzie za %fam_nick_ [ $+ [ $1 ] $+ [ _odpowiedzi ] ] odpowiedzi
+  if (%fam_nick_ [ $+ [ $1 ] $+ [ _punkty ] ] > 0) .notice $1 Zdobyles(as) %fam_nick_ [ $+ [ $1 ] $+ [ _punkty ] ] punktow w Familiadzie za %fam_nick_ [ $+ [ $1 ] $+ [ _odpowiedzi ] ] odpowiedzi.
 }
 
 alias -l ftime {
@@ -450,12 +462,31 @@ alias -l f_end {
 alias -l f_join {
   var %fam_temp = $read(" $+ $scriptdir $+ team [ $+ [ $2 ] $+ [ .fam ] ] $+ " , s , $1)
   var %fam_temp = $readn
-  if (%fam_temp != 0) halt
+  if (%fam_temp != 0) {
+    .notice $1 Ale przeciez juz jestes w tej druzynie - brak zmiany.
+    halt
+  }
   var %fam_temp = $read(" $+ $scriptdir $+ team [ $+ [ $3 ] $+ [ .fam ] ] $+ " , s , $1)
   var %fam_temp = $readn
-  if (%fam_temp > 0) write -dl [ $+ [ %fam_temp ] ] " $+ $scriptdir $+ team [ $+ [ $3 ] $+ [ .fam ] ] $+ "
+  if (%fam_temp > 0) {
+    write -dl [ $+ [ %fam_temp ] ] " $+ $scriptdir $+ team [ $+ [ $3 ] $+ [ .fam ] ] $+ "
+    if ($2 == 1) {
+      .notice $1 Zmieniles(as) druzyne na "4 $+ %fam_team1_name $+ ".
+    }
+    else {
+      .notice $1 Zmieniles(as) druzyne na "4 $+ %fam_team2_name $+ ".
+    }
+  }
+  else {
+    if ($2 == 1) {
+      .notice $1 Dolaczyles(as) do druzyny "4 $+ %fam_team1_name $+ ".
+    }
+    else {
+      .notice $1 Dolaczyles(as) do druzyny "4 $+ %fam_team2_name $+ ".
+    }
+  }
   write " $+ $scriptdir $+ team [ $+ [ $2 ] $+ [ .fam ] ] $+ " $1
-  %fam_ingame_ [ $+ [ $1 ] ] = $2
+  set %fam_ingame_ [ $+ [ $1 ] ] $2
 }
 
 alias fautopyt {
@@ -475,7 +506,7 @@ alias fautopyt {
     inc %fam_temp
   }
   .timerfamiliada off
-  fsay 10,1 Pytanie:8,1 %fam_pytanie $ftabela(0) 1,1 7,1 Czas: %fam_duration $+ s
+  fsay 15,1 Pytanie:8,1 %fam_pytanie $ftabela(0) 1,1 7,1 Czas: %fam_duration $+ s
   .timerfamiliada -o 0 %fam_duration f_timeout
 }
 
@@ -483,7 +514,7 @@ alias fpodp {
   fchk
   if (%fam_podpowiedz == $null) halt
   inc %fam_podpowiedz
-  fsay 10,1 Pytanie:8,1 %fam_pytanie $ftabela(0)
+  fsay 15,1 Pytanie:8,1 %fam_pytanie $ftabela(0)
 }
 
 alias fczas {
