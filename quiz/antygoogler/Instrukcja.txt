@@ -204,7 +204,7 @@ typu s¹ jednak b³yskawiczne.
 
 Wersja: AntyGoogler
 Autor: oyey
-
+Rozbudowa: wilk (wyœwietlanie punktów z podpowiedziami, drobne korekty)
 
 Mi³ej zabawy ¿yczy,
 Ekipa #QuizPL.
