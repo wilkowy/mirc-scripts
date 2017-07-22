@@ -1,0 +1,220 @@
+***************************************************************************
+***                            #QuizPL TeaM                             ***
+***                                                                     ***
+***                  Najlepszy kana³ quizowy na IRC-u!                  ***
+***************************************************************************
+***                        http://www.quizpl.net                        ***
+***                          kontakt@quizpl.net                         ***
+***************************************************************************
+
+Witaj drogi Quizowiczu. Oto instrukcja, dziêki której bêdziesz móg³/mog³a
+samodzielnie napisaæ i puœciæ swoj¹ premierê quizow¹ na kanale #QuizPL. :)
+
+Pe³ny poradnik znajdziesz pod adresem: http://www.quizpl.net/poradnik
+
+############################
+### I. Instalacja mIRCa. ###
+############################
+
+Jeœli masz ju¿ œci¹gniêtego i poprawnie skonfigurowanego mIRCa mo¿esz
+pomin¹æ ten punkt i po uruchomieniu mIRCa dodaæ do ulubionych kana³ #QuizPL
+oraz wejœæ na kana³ poleceniem /join #QuizPL
+
+
+Aby zaœ œci¹gn¹æ mIRCa i móc graæ na kanale #QuizPL wykonaj poni¿sze kroki:
+
+1. Œci¹gnij plik http://www.quizpl.net/viewforum.php?f=79
+2. Rozpakuj powy¿szy plik do dowolnego katalogu, np. C:\Program Files\
+3. Przeczytaj zamieszczony tam plik "-= Przeczytaj mnie =-.txt"
+4. Uruchom plik mIRC.exe
+5. Kliknij teraz na pierwsz¹ ikonkê pod menu (t¹ z piorunkiem) lub
+   wpisz na dole "/server polska.irc.pl" (bez cudzys³owu) i wciœnij
+   enter. Jeœli po³¹czy³eœ siê z serwerem i automatycznie otworzy³o siê
+   nowe okienko, to jesteœ ju¿ na kanale #QuizPL i od teraz mo¿esz
+   zdobywaæ punkciki!
+
+
+Alternatywnie mo¿esz œci¹gn¹æ mIRCa ze strony autora programu
+http://www.mirc.com/get.html lecz wówczas musisz samodzielnie skonfigurowaæ
+program lub napisaæ na adres kontakt@quizpl.net by uzyskaæ nasz¹ pomoc.
+
+###############################
+### II. Instalacja skryptu. ###
+###############################
+
+Rozpakuj to archiwum i przenieœ wszystkie pliki do g³ównego katalogu mIRCa,
+np. C:\Program Files\mIRC\ oraz uruchom plik mirc.exe
+
+Teraz, by móc korzystaæ ze skryptu (w dniu puszczania quizu), nale¿y go
+wgraæ do uruchomionego wczeœniej mIRCa. Uzyskasz to poleceniem:
+
+/load -a milioner.ini
+
+W okienku statusu powinien pojawiæ siê podobny do tego napis:
+
+* Loaded aliases 'C:\...\milioner.ini'
+
+#############################################
+### III. Przygotowanie pliku z pytaniami. ###
+#############################################
+
+Ten rodzaj quizu oparty jest na wiedzy graczy i polega na wybraniu
+poprawnej odpowiedzi z czterech podanych, przy czym tylko pierwsza podana
+odpowiedŸ siê liczy. Wybranie niepoprawnej mo¿e prowadziæ do utraty
+punktów.
+
+Gdy zdecydujesz siê napisaæ swój quiz i puœciæ go na kanale - wybierz sobie
+dziedzinê z jakiej chcia³byœ napisaæ quiz (mo¿e byæ tak¿e wiedza ogólna).
+
+Plik z pytaniami musi byæ w odpowiedniej postaci. Format pliku polega na
+tym, ¿e pytanie umieszczamy w pierwszej linijce, w kolejnej linijce
+poprawn¹ odpowiedŸ i w trzech kolejnych linijkach myl¹ce odpowiedzi (nie
+obawiaj siê, skrypt wyœwietli odpowiedzi w losowej kolejnoœci). Przyk³ad:
+
+Jakiego pierwiastka jest najwiecej w atmosferze ziemskiej?
+azot
+tlen
+fosfor
+chlor
+Skad pochodzi Conan Barbarzynca?
+z Cimmerii
+z Rivii
+z Oz
+z Modoru
+
+Przyk³adowy quiz znajdziesz w pliku "przyklad.txt", zaznajom siê z nim.
+
+
+Podstawowe zasady uk³adania quizów:
+
+- format pliku musi byæ poprawny, bo quiz utknie na b³êdnym pytaniu (unikaj
+  zbêdnych spacji i wystrzegaj siê pustych linii, mniej lub wiêcej ni¿
+  cztery odpowiedzi)
+- nie u¿ywaj w pytaniach i odpowiedziach znaków diakrytycznych (¹, æ, ê, ³,
+  ñ, ó, œ, Ÿ, ¿)
+- pytania i odpowiedzi nie mog¹ zawieraæ b³êdów ortograficznych,
+  stylistycznych, interpunkcyjnych i merytorycznych
+- pytania zaczynaj wielk¹ liter¹, a odpowiedzi ma³¹, chyba ¿e s¹ to nazwy
+  w³asne
+- pytania nie mog¹ byæ ze sob¹ powi¹zane (bez nawi¹zywania do treœci
+  poprzednich)
+- unikaj d³ugich odpowiedzi
+- nie pisz zbyt d³ugich, opisowych pytañ - skonkretyzuj je
+- nie u¿ywaj s³ów niecenzuralnych, jeœli to cytat z filmu lub piosenki u¿yj
+  gwiazdki ("*") do cenzury
+
+
+Gdy ju¿ utworzysz zestaw ok. 40 pytañ (na przyk³ad w windowsowym notatniku,
+ale nie w Wordzie!), to zapisz je w pliku, w g³ównym katalogu z mIRCem.
+Pamiêtaj jednak by nazwa pliku nie zawiera³a spacji.
+
+################################
+### IV. Puszczenie premiery. ###
+################################
+
+Kiedy napiszesz ju¿ quiz i ustalisz z operatorami kana³u dzieñ i godzinê
+premiery - mo¿esz przyst¹piæ do jej realizacji w wyznaczonym terminie. Nie
+zapomnij tylko o wgraniu skryptu (patrz punkt II). ;)
+
+Skrypt zawiera wiele poleceñ. Pe³n¹ ich listê uzyskasz poleceniem: /mkom
+
+Aby uruchomiæ quiz otwórz okno kana³u #QuizPL i wpisz:
+
+/mon #QuizPL
+
+W razie potrzeby mo¿esz zmieniæ opóŸnienie miêdzy poszczególnymi
+pytaniami (domyœlnie jest to 20 sekund) poleceniem: /minterwal 10
+oraz czas trwania jednego pytania (domyœlnie jest to 20 sekund): /mczas 30
+
+Skrypt pozwala w ró¿ny sposób reagowaæ na odpowiedzi graczy:
+
+- domyœlny tryb skryptu:
+
+/mtryb normal
+
+- zalecany tryb rozgrywki - gracze dostaj¹ ukryty dodatkowy punkt za
+ka¿d¹ odpowiedŸ (dobr¹ i z³¹), przez co przychodz¹cy pod koniec quizu
+maj¹ mniejsz¹ szansê na wygranie, wpisz:
+
+/mtryb punkt
+
+Domyœlnie odpowiedzi udzielane s¹ prywatnie puszczaj¹cemu quiz. Jeœli
+chcesz umo¿liwiæ odpowiadanie tak¿e na kanale, to wpisz: /mtryb pub
+
+Domyœlnie do odpowiedzi przypisywane s¹ literki a/b/c/d. Jeœli chcesz
+wybraæ np. format 1/2/3/4, to wpisz: /mtryb 1234 (mo¿na podaæ dowolne 4
+znaki, byle ró¿ne)
+
+Skrypt zacznie zadawaæ pytania z pliku (za "przyklad.txt" podaj nazwê
+w³asnego pliku z pytaniami) po wpisaniu:
+
+/mplik przyklad.txt
+
+*** Teraz gracze graj¹ i ciesz¹ siê z Twojej premiery. ;) ***
+
+W sytuacji gdyby quiz siê utkn¹³ (z powodu b³êdu w pliku z pytaniami), to
+nie panikuj. Wpisz wtedy dwukrotnie polecenie /mpauza Spowoduje to
+pominiêcie b³êdnego pytania i przejœcie do kolejnego. W przypadku powa¿nych
+b³êdów w formacie w pliku z pytaniami koniecznym mo¿e siê okazaæ pominiêcie
+wiêcej ni¿ jednego pytania lub wprowadzenie poprawek w pliku z pytaniami w
+trakcie premiery.
+
+Po zakoñczeniu premiery trzeba wyœwietliæ wyniki. Uczynisz to poleceniem:
+
+/mstat
+
+Na koniec zamykasz quiz poleceniem:
+
+/moff
+
+
+Po zakoñczeniu i zamkniêciu quizu mo¿esz (zalecane), ale nie musisz
+wy³adowaæ skrypt z mIRCa. Dokonasz tego poleceniem:
+
+/unload -a milioner.ini
+
+Aby puœciæ kolejn¹ premierkê nale¿y ponownie wgraæ skrypt poleceniem /load
+(patrz punkt II).
+
+
+Uwaga, nie zapomnij by po zakoñczeniu premiery przys³aæ plik z pytaniami,
+temat quizu wraz z dat¹ puszczenia oraz pe³ne wyniki na adres kana³owy:
+kontakt@quizpl.net Pytania zostan¹ wówczas dodane do bazy naszego quizbota
+i wszyscy bêd¹ mogli siê nimi cieszyæ jeszcze przez d³ugie lata ;)
+
+##############################
+### V. Polecenia kana³owe. ###
+##############################
+
+W trakcie trwania premiery quizowej dla graczy dostêpne s¹ specjalne
+polecenia. Pamiêtaj, ¿e z uwagi na specyficzny sposób funkcjonowania mIRCa
+te polecenia nie s¹ dostêpne dla puszczaj¹cego premierê.
+
+Wyœwietlenie w³asnej punktacji: !ile
+
+Wyœwietlenie zasad punktowania: !rules
+
+#################################
+### VI. Informacje dodatkowe. ###
+#################################
+
+Skrypt ten jest rozszerzon¹ wersj¹ standardowych milionerów o przyznawanie
+dodatkowych punktów za ci¹g poprawnych odpowiedzi ka¿dego z graczy oraz
+bonusowe punkty jeœli dany gracz jako jedyny poprawnie odpowiedzia³.
+Dodatkowo pytania s¹ zabezpieczone antygooglerem, tak jak w naszym
+quizbocie, przed kopiowaniem ich do Google i oszukiwaniem (googlowaniem).
+Quiz odbywa siê na kanale, ale gracze udzielaj¹ odpowiedzi prywatnie
+puszczaj¹cemu quiz.
+
+###################################
+### VII. Informacje o skrypcie. ###
+###################################
+
+Wersja: Milionerzy 3.04
+Autor: KrzS
+Rozbudowa: wilk (odpowiadanie na priv i opcjonalnie na kanale, wybór
+           odpowiedzi a/b/c/d, 1/2/3/4 lub innych)
+
+
+Mi³ej zabawy ¿yczy,
+Ekipa #QuizPL.
