@@ -192,7 +192,7 @@ te polecenia nie s¹ dostêpne dla puszczaj¹cego premierê.
 
 Wyœwietlenie w³asnej punktacji: !ile
 
-Wyœwietlenie zasad punktowania: !rules
+Wyœwietlenie zasad punktowania: !zasady
 
 #################################
 ### VI. Informacje dodatkowe. ###
@@ -210,10 +210,12 @@ puszczaj¹cemu quiz.
 ### VII. Informacje o skrypcie. ###
 ###################################
 
-Wersja: Milionerzy 3.04
+Wersja: Milionerzy 3.2
 Autor: KrzS
 Rozbudowa: wilk (odpowiadanie na priv i opcjonalnie na kanale, wybór
-           odpowiedzi a/b/c/d, 1/2/3/4 lub innych)
+           odpowiedzi a/b/c/d, 1/2/3/4 lub innych poprzez rozbudowane
+           polecenie /mtryb, alias /mdelay, mo¿liwoœæ wy³¹czania bonusów,
+           zapisywanie ustawieñ w pliku)
 
 
 Mi³ej zabawy ¿yczy,
