@@ -10,6 +10,6 @@ Repository of various quiz scripts used on channel #QuizPL (IRCnet).
 - **Mieszacz 2** (author: snajperx, mods: oyey [bonus answer], wilk [shuffling modes, !przyp reshuffles, same answer protection, timing answers])
 - **Milionerzy** v1.52 (author: Dizzy, wilk [private answers as default])
 - **Milionerzy (legacy)** v1.51 (author: Dizzy, wilk [accepts private answers])
-- **Milionerzy 2** v3.2 (author: Dizzy & KrzS [total redesign], wilk [private answers as default, customizable answer marks ABCD/1234, ability to disable bonuses etc.])
+- **Milionerzy 2** v3.3 (author: Dizzy & KrzS [total redesign], wilk [private answers as default, customizable answer marks ABCD/1234, ability to disable bonuses etc.])
 - **Milionerzy 2 (older)** v3.04 (author: Dizzy & KrzS [total redesign], wilk [private answers as default, customizable answer marks ABCD/1234 etc.])
 - **Milionerzy 2 (legacy)** v3.01 (author: Dizzy & KrzS [total redesign], wilk [accepts private answers])
