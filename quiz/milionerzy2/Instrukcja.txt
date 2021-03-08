@@ -210,12 +210,13 @@ puszczaj¹cemu quiz.
 ### VII. Informacje o skrypcie. ###
 ###################################
 
-Wersja: Milionerzy 3.3
+Wersja: Milionerzy 3.4
 Autor: KrzS
 Rozbudowa: wilk (odpowiadanie na priv i opcjonalnie na kanale, wybór
            odpowiedzi a/b/c/d, 1/2/3/4 lub innych poprzez rozbudowane
-           polecenie /mtryb, alias /mdelay, mo¿liwoœæ wy³¹czania bonusów,
-           mo¿liwoœæ wy³¹czenia antygooglera, zapisywanie ustawieñ w pliku)
+           polecenie /mtryb, ponowne przemieszanie by uniknac serii odpowiedzi,
+		   alias /mdelay, mo¿liwoœæ wy³¹czania bonusów, mo¿liwoœæ wy³¹czenia
+		   antygooglera, zapisywanie ustawieñ w pliku)
 
 
 Mi³ej zabawy ¿yczy,
