@@ -1,5 +1,5 @@
-;# MassMode v1.3 by wilk (13.06.2008-09.08.2015)
-;###############################################################
+;# MassMode v1.3 by wilk wilkowy (13.06.2008-09.08.2015)
+;#########################################################
 ;# Features:
 ;# - wildcards allowed
 ;# - supports very fast kick6 and mode5 combos
@@ -16,9 +16,9 @@
 ;#
 ;# /mkreason <reason> - set kick reason (alias: /mm)
 ;# /mk <nicks...>     - mass kick
-;###############################################################
+;#########################################################
 
-on *:start: {
+on *:START: {
   .ial on
   if (%massmode.reason == $null) set %massmode.reason --==[ AdioS ]==--
   echo -s MassMode v1.3 by wilk - loaded...

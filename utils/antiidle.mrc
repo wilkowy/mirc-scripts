@@ -1,5 +1,5 @@
-;# AntiIdle v1.0 by wilk (10.08.2015)
-;####################################################
+;# AntiIdle v1.0 by wilk wilkowy (10.08.2015)
+;######################################################
 ;# Features:
 ;# - simulates conversation and resets an idle 
 ;#
@@ -8,12 +8,12 @@
 ;#
 ;# Commands:
 ;# /antiidle - show configuration dialog (alias: /ai)
-;####################################################
+;######################################################
 
 alias ai antiidle
 alias antiidle dialog -mr antiidle.dialog antiidle.dialog
 
-on *:start: {
+on *:START: {
   if (%antiidle.enabled == $null) {
     set %antiidle.enabled 0
     set %antiidle.random 0
@@ -25,12 +25,12 @@ on *:start: {
   echo -s AntiIdle v1.0 by wilk - loaded $+ $iif(%antiidle.enabled == 1, $chr(32) $+ $chr(40) $+ active $+ $chr(41)) $+ ...
 }
 
-on *:exit: {
+on *:EXIT: {
   .timer(antiidle) off
   unset %antiidle._*
 }
 
-on *:unload: {
+on *:UNLOAD: {
   .timer(antiidle) off
   unset %antiidle._*
 }
@@ -52,7 +52,7 @@ dialog -l antiidle.dialog {
 }
 
 ; init dialog
-on *:dialog:antiidle.dialog:init:*: {
+on *:DIALOG:antiidle.dialog:INIT:*: {
   did $iif(%antiidle.enabled == 1, -c, -u) $dname 4
   did $iif(%antiidle.enabled == 1, -e, -b) $dname 5,6,7,10
   did $iif(%antiidle.random == 1, -c, -u) $dname 5
@@ -62,7 +62,7 @@ on *:dialog:antiidle.dialog:init:*: {
 }
 
 ; dialog click - ok
-on *:dialog:antiidle.dialog:sclick:1: {
+on *:DIALOG:antiidle.dialog:SCLICK:1: {
   set %antiidle.enabled $did($dname, 4).state
   set %antiidle.random $did($dname, 5).state
   var %delay_min = $did($dname, 7).text
@@ -80,20 +80,20 @@ on *:dialog:antiidle.dialog:sclick:1: {
 }
 
 ; dialog click - enable/disable
-on *:dialog:antiidle.dialog:sclick:4: {
+on *:DIALOG:antiidle.dialog:SCLICK:4: {
   did $iif($did($dname, 4).state == 1, -e, -b) $dname 5,6,7,10
   did $iif(($did($dname, 4).state == 1) && ($did($dname, 5).state == 1), -e, -b) $dname 8,9
 }
 
 ; dialog click - random
-on *:dialog:antiidle.dialog:sclick:5: {
+on *:DIALOG:antiidle.dialog:SCLICK:5: {
   did $iif($did($dname, 5).state == 1, -e, -b) $dname 8,9
 }
 
 ; main timer handler
 alias -l antiidle.chat {
   if ((%antiidle.enabled == 1) && ($status == connected)) {
-    .msg $me [anti-idle]
+    .msg $me [wilk-anti-idle]
     if (%antiidle.random == 1) {
       set -e %antiidle._delay $rand(%antiidle.delay_min, %antiidle.delay_max)
       .timer(antiidle) -o 1 %antiidle._delay antiidle.chat
@@ -101,7 +101,7 @@ alias -l antiidle.chat {
   }
 }
 
-on ^*:TEXT:[anti-idle]:?: {
+on ^*:TEXT:[wilk-anti-idle]:?: {
   if ((%antiidle.enabled == 1) && ($nick == $me)) {
     window -h $me
     haltdef

@@ -1,5 +1,5 @@
-;# KeepNick v1.5 by wilk (26.12.2008-13.08.2015)
-;###############################################################
+;# KeepNick v1.5 by wilk wilkowy (26.12.2008-13.08.2015)
+;#########################################################
 ;# Features:
 ;# - fast nick regaining
 ;# - detects all nick events and netsplits
@@ -10,12 +10,12 @@
 ;#
 ;# Commands:
 ;# /keepnick - show configuration dialog (alias: /kn)
-;###############################################################
+;#########################################################
 
 alias kn keepnick
 alias keepnick dialog -mr keepnick.dialog keepnick.dialog
 
-on *:start: {
+on *:START: {
   if (%keepnick.enabled == $null) {
     set %keepnick.enabled 0
     set %keepnick.nick $me
@@ -27,12 +27,12 @@ on *:start: {
   echo -s KeepNick v1.5 by wilk - loaded $+ $iif(%keepnick.enabled == 1, $chr(32) $+ $chr(40) $+ active $+ $chr(41)) $+ ...
 }
 
-on *:exit: {
+on *:EXIT: {
   .timer(keepnick) off
   unset %keepnick._*
 }
 
-on *:unload: {
+on *:UNLOAD: {
   .timer(keepnick) off
   unset %keepnick._*
 }
@@ -53,7 +53,7 @@ dialog -l keepnick.dialog {
 }
 
 ; init dialog
-on *:dialog:keepnick.dialog:init:*: {
+on *:DIALOG:keepnick.dialog:INIT:*: {
   did $iif(%keepnick.enabled == 1, -c, -u) $dname 4
   did $iif(%keepnick.enabled == 1, -e, -b) $dname 5,6,7,8,9
   did -a $dname 6 %keepnick.nick
@@ -61,7 +61,7 @@ on *:dialog:keepnick.dialog:init:*: {
 }
 
 ; dialog click - ok
-on *:dialog:keepnick.dialog:sclick:1: {
+on *:DIALOG:keepnick.dialog:SCLICK:1: {
   set %keepnick.enabled $did($dname, 4).state
   var %nick = $did($dname, 6).text
   var %delay = $did($dname, 8).text
@@ -76,7 +76,7 @@ on *:dialog:keepnick.dialog:sclick:1: {
 }
 
 ; dialog click - enable/disable
-on *:dialog:keepnick.dialog:sclick:4: {
+on *:DIALOG:keepnick.dialog:SCLICK:4: {
   did $iif($did($dname, 4).state == 1, -e, -b) $dname 5,6,7,8,9
 }
 
