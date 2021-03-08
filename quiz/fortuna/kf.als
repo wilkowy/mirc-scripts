@@ -1,5 +1,5 @@
 ; usuniety bug z /replace - gracz ktorego sie usunelo nie mogl wchodzic na swoje miejsce
-; tuning by wilk (zmieniono absurdalnie wysokie stawki: kasa z 10000 do 2000, stawka z 10000 do 500, zmniejszone wykrecone stawki za odsloniete litery z 50/100/250/500/1000/2000 na 50/100/150/200/250/300, podniesiono podstawowa stawke z 50 do 100, obnizono cene samoglosek z 500 do 250)
+; mod by wilk (zmieniono absurdalnie wysokie stawki: kasa z 10000 do 2000, stawka z 10000 do 500, zmniejszone wykrecone stawki za odsloniete litery z 50/100/250/500/1000/2000 na 50/100/150/200/250/300, podniesiono podstawowa stawke z 50 do 100, obnizono cene samoglosek z 500 do 250, nagroda dodatkowych rund zmniejszona do 3 z 5, poprawki)
 
 on *:dialog:kolof:sclick:*: {
   if ($did == 4) unset %kf_prowadzacy %kf_kanal
@@ -86,7 +86,7 @@ alias -l kfon2 {
   %kf_start = $asctime($gmt)
   %kf_afks = 5
   write -c " $+ $scriptdir $+ kf.lst $+ "
-  kfsay 11,1 Swistak(r) 8Kolo Fortuny(tm) 11v1.0
+  kfsay 11,1 Swistak(r) 8Kolo Fortuny(tm) 11v1.1
   kfsay 9,1 Starring13 $iif(%kf_prowadzacy = k , $me 9as 13Magda Masny9 and 8Wojciech Pijanowski , 8Magda Masny9 and13 $me 9as 13Wojciech Pijanowski)
 }
 alias -l kfmsg {
@@ -99,6 +99,7 @@ alias -l kfsay {
 }
 alias haslo {
   kfchk
+  if (%kf_haslo != $null) kfmsg Pytanie jest juz w trakcie odpowiadania - uzyj polecenia /pomin lub /anuluj
   var %kf_nowa_kategoria = $zmiana($input(Podaj kategorie , 69))
   var %kf_nowe_haslo = $zmiana($input(Podaj haslo , 69))
   if (($len(%kf_nowe_haslo) < 1) || ($len(%kf_nowa_kategoria) < 1)) halt
@@ -277,6 +278,7 @@ alias pomin {
 alias -l kfcongr {
   inc %kf_rundy
   if ($len($read(" $+ $scriptdir $+ kf.lst $+ " , w , * $+ $chr(160) $1 $chr(160) $+ *)) < 1) write " $+ $scriptdir $+ kf.lst $+ " $chr(160) $1 $chr(160) 0 $chr(160)
+  var %kf_punkty_stare = %kf_punkty
   kfsetline $1
   kfrank2 kf_punkty 6 %kf_line
   kfrank2 kf_nagrody 7- %kf_line
@@ -443,7 +445,7 @@ alias kfoff {
   .timerkf off
   .remove " $+ $scriptdir $+ kf.lst $+ "
   kfsay 11,1 Swistak(r) 8Kolo Fortuny(tm) 11zakonczony !!!!!!!!! 
-  kfsay 9,1 Autor:11 snajperx9,1, tuning:11 wilk 
+  kfsay 9,1 Autor:11 snajperx9,1, poprawki:11 wilk 
   kfsay 9,1 Sciagaj z:13 http://www.quizpl.net 
   unset %kf*
 }
@@ -506,8 +508,8 @@ alias -l kfchk {
   if ($len(%kf_kanal) < 1) kfmsg Najpierw uruchom Kolo Fortuny(tm)
 }
 alias -l kfchoose { 
- dialog -vms kolof kolof
- did -c kolof 1
+  dialog -vms kolof kolof
+  did -c kolof 1
 }
 dialog kolof {
   title "Kolo Fortuny(tm)"

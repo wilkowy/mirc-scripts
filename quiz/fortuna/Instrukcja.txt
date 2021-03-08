@@ -111,9 +111,9 @@ Teraz gracze maj¹ czas na zg³oszenie chêci udzia³u w danej rundzie gry.
 Gdy ktoœ odgadnie has³o, to wracasz do polecenia wprowadzania has³a tyle
 razy, ile hase³ masz przygotowanych.
 
-W sytuacji gdyby któryœ z graczy mimo przyst¹pienia do gry przesta³ graæ
-mo¿esz pomin¹æ jego kolejkê poleceniem /pomin Gra przejdzie do kolejnej
-osoby.
+W sytuacji gdyby do has³a nie zg³osi³o siê mniej ni¿ 5 osób lub któryœ z graczy
+mimo przyst¹pienia do gry przesta³ graæ - mo¿esz pomin¹æ jego kolejkê
+poleceniem /pomin
 
 Po zakoñczeniu premiery trzeba wyœwietliæ wyniki. Uczynisz to poleceniem:
 
@@ -154,9 +154,15 @@ Losowanie stawki: !krece
 ### VI. Informacje o skrypcie. ###
 ##################################
 
-Wersja: Ko³o Fortuny 1.0
+Wersja: Ko³o Fortuny 1.1
 Autor: snajperx
-Tuning: wilk (sensowniejsze stawki: kasa z 10000 do 2000, stawka z 10000 do 500, zmniejszone wykrecone stawki za odsloniete litery z 50/100/250/500/1000/2000 na 50/100/150/200/250/300, podniesiono podstawowa stawke z 50 do 100, obnizono cene samoglosek z 500 do 250)
+Tuning: wilk (sensowniejsze stawki: kasa z 10000 do 2000, stawka z 10000 do 
+              500, zmniejszone wykrecone stawki za odsloniete litery lub 
+			  nagrody z 50/100/250/500/1000/2000 na 50/100/150/200/250/300, 
+			  podniesiono podstawowa stawke z 50 do 100 (aby mo¿na by³o 
+			  wykrêciæ obni¿on¹ stawkê), obnizono cene samoglosek z 500 do 250,
+			  zmniejszono liczbê bonusowych rund z 5 do 3, uniwmo¿liwiono
+			  przypadkowe wpisanie /haslo w trakcie zgadywania)
 
 
 Mi³ej zabawy ¿yczy,
