@@ -189,7 +189,7 @@ alias -l mkon {
   if ($script(kfx.rem) != $null) .unload -rs kfx.rem
   if ($script(kf1.rem) != $null) .unload -rs kf1.rem
   if ($alias(kf.als) != $null) .unload -a kf.als
-  msg %mkkanal 2,2.........11 LiTeRaKi 9Mieszacz Kfiss™ 2.........
+  msg %mkkanal 2,2.........11 LiTeRaKi 9Mieszacz Kfiss™ 2.........
   msg %mkkanal 9,2 Dostepne komendy: !podp , !przyp , !punkty 
   set %ktory 1
   set %quizstart $ctime
@@ -229,7 +229,7 @@ alias mkoff {
   msg %mkkanal 0,2 LiTeRaKi 8Mieszacz Kfiss™ 9zakonczony! 
   if (%licz == 1) { msg %mkkanal 9,2 Czas gry:8 %licz 9wyraz w8 %quizczas 2.........  }
   else { msg %mkkanal 9,2 Czas gry:8 %licz 9wyrazow w8 %quizczas  }
-  msg %mkkanal 0,2 Autorzy: 8snajperx0, 8oyey0 & 8wilk 0 0 0 0 0 0 
+  msg %mkkanal 0,2 Autorzy: 8snajperx0,2, 8oyey0 & 8wilk 0 0 0 0 0 0 
   msg %mkkanal 0,2 Sciagaj z:9 http://www.quizpl.net 2... 
   unset %mkkanal %wyraz %wyraz2 %pomieszany_wyraz %trybgry %score* %wyniki* %poz* %xx %xxx %punkty*
   unset %quiz* %stawka %gracze %plk %num %par %lin %ktory %podp %block %autonxt %delay %starydel %adres %stat %pomoc* %q1 %q2 %rc %pytan %pyt %licz %qqstart %pierwszy
