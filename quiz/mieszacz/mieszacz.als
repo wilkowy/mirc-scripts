@@ -188,7 +188,7 @@ alias -l mkon {
   if ($script(kfx.rem) != $null) .unload -rs kfx.rem
   if ($script(kf1.rem) != $null) .unload -rs kf1.rem
   if ($alias(kf.als) != $null) .unload -a kf.als
-  msg %mkkanal 2,2.........11 LiTeRaKi 9Mieszacz Kfiss™ 2.........
+  msg %mkkanal 2,2.........11 LiTeRaKi 9Mieszacz Kfiss™ 2.........
   msg %mkkanal 9,2 Dostepne komendy: !podp , !przyp , !punkty 
   set %ktory 1
   set %quizstart $ctime
